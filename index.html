@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dewi Wahyuni – Beauty & Digital Content</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
   :root {
     --cream: #f5f2ed;
@@ -760,6 +761,84 @@
     body { cursor: auto; }
     .cursor, .cursor-follower { display: none; }
   }
+
+  /* Tambahkan di dalam <style> */
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 40px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.download-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gold);
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.download-btn:hover::before {
+  left: 0;
+}
+
+.download-btn:hover {
+  color: var(--dark);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(201, 168, 76, 0.3);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+}
+
+.download-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s;
+}
+
+.download-btn:hover .download-icon {
+  transform: translateY(2px);
+}
+
+.download-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.download-btn.secondary {
+  border-color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.8);
+}
+
+.download-btn.secondary::before {
+  background: rgba(255,255,255,0.1);
+}
+
+.download-btn.secondary:hover {
+  border-color: white;
+  color: white;
+}
 </style>
 </head>
 <body>
@@ -770,7 +849,7 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">DW.</a>
+  <a href="#" class="nav-logo">DEW.</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -789,8 +868,18 @@
   <div class="hero-lines"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Beauty & Digital Content</p>
-    <h1 class="hero-name">Dewi<br><span>Wahyuni</span></h1>
+    <h1 class="hero-name">Putu Dewi<br><span>Wahyuni</span></h1>
     <p class="hero-sub">Content Creator · Beauty Influencer · Digital Entrepreneur</p>
+      <div class="download-group" style="opacity: 0; animation: fadeUp 0.8s 0.9s forwards;">
+    <a href="Portofolio Putu Dewi Wahyuni (2).pdf" download class="download-btn">
+      <i class="fas fa-download download-icon"></i>
+      Portofolio
+    </a>
+    <a href="CV Putu Dewi Wahyuni (1).pdf" download class="download-btn secondary">
+      <i class="fas fa-file-alt download-icon"></i>
+      CV
+    </a>
+  </div>
   </div>
   <div class="hero-scroll">
     <div class="scroll-line"></div>
@@ -847,6 +936,7 @@
       <h2 class="section-title">Featured <em>Projects</em></h2>
     </div>
   </div>
+  <a href="project-01.html" style="text-decoration:none;">
   <div class="projects-grid">
     <div class="project-card reveal d1">
       <div class="project-card-bg"></div>
@@ -858,36 +948,43 @@
         <div class="project-arrow">View Project</div>
       </div>
     </div>
-    <div class="project-card reveal d2">
-      <div class="project-card-bg"></div>
-      <div class="project-num">02</div>
-      <div class="project-content">
-        <span class="project-tag">Brand Review</span>
-        <h3 class="project-name">Honest Product Reviews</h3>
-        <p class="project-desc">Product review content focusing on honest and relatable experiences with local Indonesian beauty brands.</p>
-        <div class="project-arrow">View Project</div>
+  </a>
+  <a href="project-02.html" style="text-decoration:none;">
+      <div class="project-card reveal d2">
+        <div class="project-card-bg"></div>
+        <div class="project-num">02</div>
+        <div class="project-content">
+          <span class="project-tag">Brand Review</span>
+          <h3 class="project-name">Honest Product Reviews</h3>
+          <p class="project-desc">Product review content focusing on honest and relatable experiences with local Indonesian beauty brands.</p>
+          <div class="project-arrow">View Project</div>
+        </div>
       </div>
-    </div>
-    <div class="project-card reveal d3">
-      <div class="project-card-bg"></div>
-      <div class="project-num">03</div>
-      <div class="project-content">
-        <span class="project-tag">Educational</span>
-        <h3 class="project-name">Teen Beauty Education</h3>
-        <p class="project-desc">Educational beauty content tailored specifically for teenagers — accessible, relatable, and empowering.</p>
-        <div class="project-arrow">View Project</div>
+  </a>
+  <a href="project-03.html" style="text-decoration:none;">
+      <div class="project-card reveal d3">
+        <div class="project-card-bg"></div>
+        <div class="project-num">03</div>
+        <div class="project-content">
+          <span class="project-tag">Educational</span>
+          <h3 class="project-name">Teen Beauty Education</h3>
+          <p class="project-desc">Educational beauty content tailored specifically for teenagers — accessible, relatable, and empowering.</p>
+          <div class="project-arrow">View Project</div>
+        </div>
       </div>
-    </div>
-    <div class="project-card reveal d4">
-      <div class="project-card-bg"></div>
-      <div class="project-num">04</div>
-      <div class="project-content">
-        <span class="project-tag">Digital Business</span>
-        <h3 class="project-name">Online Business Management</h3>
-        <p class="project-desc">Managing a small online business independently — promotional visuals, customer data, and social media communication.</p>
-        <div class="project-arrow">View Project</div>
+  </a>
+  <a href="project-04.html" style="text-decoration:none;">
+      <div class="project-card reveal d4">
+        <div class="project-card-bg"></div>
+        <div class="project-num">04</div>
+        <div class="project-content">
+          <span class="project-tag">Digital Business</span>
+          <h3 class="project-name">Online Business Management</h3>
+          <p class="project-desc">Managing a small online business independently — promotional visuals, customer data, and social media communication.</p>
+          <div class="project-arrow">View Project</div>
+        </div>
       </div>
-    </div>
+  </a>
   </div>
 </section>
 
@@ -991,43 +1088,116 @@
   <div class="brands-marquee-wrap" style="margin-top:60px;">
     <div class="brands-track" id="brandsTrack">
       <!-- Duplicated for seamless loop -->
-      <div class="brand-chip">Sasha</div>
-      <div class="brand-chip">Miranda</div>
-      <div class="brand-chip">DR White</div>
-      <div class="brand-chip">Huawei</div>
-      <div class="brand-chip">Lovillea</div>
-      <div class="brand-chip">Emina</div>
-      <div class="brand-chip">Wardah</div>
-      <div class="brand-chip">Implora</div>
-      <div class="brand-chip">AXIS</div>
-      <div class="brand-chip">Ellips</div>
-      <div class="brand-chip">XL</div>
-      <div class="brand-chip">Hanasui</div>
-      <div class="brand-chip">Glad2Glow</div>
-      <div class="brand-chip">Reglow Skincare</div>
-      <div class="brand-chip">OPPO</div>
-      <div class="brand-chip">Ozzaskin</div>
-      <div class="brand-chip">Skin1004</div>
-      <div class="brand-chip">Sunsilk</div>
+      <div class="brand-chip">
+        <i class="fas fa-star" style="margin-right: 5px;"></i> Sasha
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-smile" style="margin-right: 5px;"></i> Miranda
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-flask" style="margin-right: 5px;"></i> DR White
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-mobile-alt" style="margin-right: 5px;"></i> Huawei
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-gem" style="margin-right: 5px;"></i> Lovillea
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-spa" style="margin-right: 5px;"></i> Emina
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-mosque" style="margin-right: 5px;"></i> Wardah
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-lipstick" style="margin-right: 5px;"></i> Implora
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-wifi" style="margin-right: 5px;"></i> AXIS
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-oil-can" style="margin-right: 5px;"></i> Ellips
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-tower-cell" style="margin-right: 5px;"></i> XL
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-hand-sparkles" style="margin-right: 5px;"></i> Hanasui
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-sun" style="margin-right: 5px;"></i> Glad2Glow
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-seedling" style="margin-right: 5px;"></i> Reglow Skincare
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-mobile-alt" style="margin-right: 5px;"></i> OPPO
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-magic" style="margin-right: 5px;"></i> Ozzaskin
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-water" style="margin-right: 5px;"></i> Skin1004
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-shower" style="margin-right: 5px;"></i> Sunsilk
+      </div>
+<!-- Ulangi untuk duplikatnya -->
       <!-- duplicate -->
-      <div class="brand-chip">Sasha</div>
-      <div class="brand-chip">Miranda</div>
-      <div class="brand-chip">DR White</div>
-      <div class="brand-chip">Huawei</div>
-      <div class="brand-chip">Lovillea</div>
-      <div class="brand-chip">Emina</div>
-      <div class="brand-chip">Wardah</div>
-      <div class="brand-chip">Implora</div>
-      <div class="brand-chip">AXIS</div>
-      <div class="brand-chip">Ellips</div>
-      <div class="brand-chip">XL</div>
-      <div class="brand-chip">Hanasui</div>
-      <div class="brand-chip">Glad2Glow</div>
-      <div class="brand-chip">Reglow Skincare</div>
-      <div class="brand-chip">OPPO</div>
-      <div class="brand-chip">Ozzaskin</div>
-      <div class="brand-chip">Skin1004</div>
-      <div class="brand-chip">Sunsilk</div>
+      <div class="brand-chip">
+        <i class="fas fa-star" style="margin-right: 5px;"></i> Sasha
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-smile" style="margin-right: 5px;"></i> Miranda
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-flask" style="margin-right: 5px;"></i> DR White
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-mobile-alt" style="margin-right: 5px;"></i> Huawei
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-gem" style="margin-right: 5px;"></i> Lovillea
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-spa" style="margin-right: 5px;"></i> Emina
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-mosque" style="margin-right: 5px;"></i> Wardah
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-lipstick" style="margin-right: 5px;"></i> Implora
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-wifi" style="margin-right: 5px;"></i> AXIS
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-oil-can" style="margin-right: 5px;"></i> Ellips
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-tower-cell" style="margin-right: 5px;"></i> XL
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-hand-sparkles" style="margin-right: 5px;"></i> Hanasui
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-sun" style="margin-right: 5px;"></i> Glad2Glow
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-seedling" style="margin-right: 5px;"></i> Reglow Skincare
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-mobile-alt" style="margin-right: 5px;"></i> OPPO
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-magic" style="margin-right: 5px;"></i> Ozzaskin
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-water" style="margin-right: 5px;"></i> Skin1004
+      </div>
+      <div class="brand-chip">
+        <i class="fas fa-shower" style="margin-right: 5px;"></i> Sunsilk
+      </div>
     </div>
   </div>
 </section>

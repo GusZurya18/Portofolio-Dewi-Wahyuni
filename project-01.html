@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natural Makeup: Sculpting & Framing – Dewi Wahyuni</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f2ed; --dark: #1a1a1a; --gold: #c9a84c;
+    --gold-light: #e8c97a; --warm-gray: #8a8278; --off-white: #faf8f5;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--dark); overflow-x:hidden; cursor:none; }
+
+  .cursor { width:12px;height:12px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width 0.3s,height 0.3s; }
+  .cursor-follower { width:40px;height:40px;border:1px solid var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left 0.15s ease,top 0.15s ease,width 0.3s,height 0.3s;opacity:0.6; }
+
+  nav { position:fixed;top:0;left:0;right:0;z-index:1000;padding:24px 60px;display:flex;justify-content:space-between;align-items:center;transition:background 0.5s,padding 0.3s; }
+  nav.scrolled { background:rgba(245,242,237,0.92);backdrop-filter:blur(20px);padding:16px 60px;box-shadow:0 1px 0 rgba(201,168,76,0.15); }
+  .nav-logo { font-family:'Playfair Display',serif;font-size:1.2rem;letter-spacing:0.08em;color:white;text-decoration:none;font-weight:700;transition:color 0.3s; }
+  nav.scrolled .nav-logo { color:var(--dark); }
+  .nav-back { display:flex;align-items:center;gap:10px;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;transition:color 0.3s; }
+  nav.scrolled .nav-back { color:var(--warm-gray); }
+  .nav-back:hover { color:var(--gold); }
+
+  /* HERO */
+  .hero { height:90vh;background:linear-gradient(135deg,#1a1a1a 0%,#2d2520 60%,#1a1a1a 100%);display:flex;align-items:flex-end;padding-bottom:80px;position:relative;overflow:hidden; }
+  .hero-grain { position:absolute;inset:0;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+  .hero-num { position:absolute;font-family:'Playfair Display',serif;font-size:clamp(10rem,22vw,20rem);font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(201,168,76,0.08);top:50%;right:80px;transform:translateY(-50%);line-height:1;user-select:none; }
+  .hero-glow { position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%);top:40%;left:30%;transform:translate(-50%,-50%);animation:glowPulse 4s ease-in-out infinite; }
+  @keyframes glowPulse { 0%,100%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) scale(1.1);} }
+  .hero-inner { max-width:1200px;margin:0 auto;padding:0 60px;position:relative;z-index:2;width:100%; }
+  .hero-tag { font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:16px;opacity:0;animation:fadeUp 0.7s 0.2s forwards; }
+  .hero-tag::before { content:'';width:40px;height:1px;background:var(--gold);display:block; }
+  .hero-title { font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:900;color:white;line-height:1.05;margin-bottom:24px;opacity:0;animation:fadeUp 0.7s 0.35s forwards; }
+  .hero-title em { color:var(--gold);font-style:italic; }
+  .hero-meta { display:flex;gap:32px;flex-wrap:wrap;opacity:0;animation:fadeUp 0.7s 0.5s forwards; }
+  .hero-meta-item { display:flex;align-items:center;gap:8px;font-size:0.8rem;color:rgba(255,255,255,0.5);letter-spacing:0.08em; }
+  .hero-meta-dot { width:4px;height:4px;background:var(--gold);border-radius:50%; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);} }
+
+  .section { padding:100px 0; }
+  .section-inner { max-width:1200px;margin:0 auto;padding:0 60px; }
+  .section-label { font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:16px; }
+  .section-label::before { content:'';width:40px;height:1px;background:var(--gold);display:block; }
+  .section-title { font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;margin-bottom:40px; }
+  .section-title em { color:var(--gold);font-style:italic; }
+
+  /* OVERVIEW */
+  #overview { background:var(--off-white); }
+  .overview-grid { display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start; }
+  .overview-body { font-size:1rem;line-height:1.9;color:#555;font-weight:300; }
+  .overview-body p+p { margin-top:20px; }
+  .overview-body strong { color:var(--dark);font-weight:600; }
+  .info-card { background:var(--dark);border-radius:4px;padding:40px 36px;position:relative;overflow:hidden; }
+  .info-card::before { content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold)); }
+  .info-row { display:flex;justify-content:space-between;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.06); }
+  .info-row:last-child { border-bottom:none; }
+  .info-key { font-size:0.72rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase; }
+  .info-val { font-size:0.9rem;color:rgba(255,255,255,0.8);text-align:right; }
+  .info-val.gold { color:var(--gold); }
+
+  /* CHALLENGE + SOLUTION */
+  #cs { background:var(--dark); }
+  #cs .section-title { color:white; }
+  .cs-grid { display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:60px; }
+  .cs-panel { padding:64px 56px;position:relative;overflow:hidden; }
+  .cs-panel.challenge { background:rgba(255,255,255,0.03); }
+  .cs-panel.solution { background:rgba(201,168,76,0.06); }
+  .cs-panel::before { content:'';position:absolute;top:0;left:0;right:0;height:2px; }
+  .cs-panel.challenge::before { background:linear-gradient(90deg,#e05555,transparent); }
+  .cs-panel.solution::before { background:linear-gradient(90deg,var(--gold),transparent); }
+  .cs-icon { font-size:2.8rem;margin-bottom:24px;display:block; }
+  .cs-pill { display:inline-block;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:5px 12px;border-radius:2px;margin-bottom:16px; }
+  .cs-panel.challenge .cs-pill { color:#e07777;border:1px solid rgba(224,117,117,0.3); }
+  .cs-panel.solution .cs-pill { color:var(--gold);border:1px solid rgba(201,168,76,0.35); }
+  .cs-title { font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:white;line-height:1.25;margin-bottom:20px; }
+  .cs-body { font-size:0.9rem;color:rgba(255,255,255,0.5);line-height:1.85; }
+  .cs-body strong { color:var(--gold);font-weight:500; }
+
+  /* TECHNIQUES */
+  #techniques { background:var(--cream); }
+  .techniques-grid { display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:60px; }
+  .technique-card { background:white;padding:56px 48px;position:relative;overflow:hidden;transition:background 0.3s; }
+  .technique-card::before { content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform 0.4s;transform-origin:bottom; }
+  .technique-card:hover::before { transform:scaleY(1); }
+  .technique-card:hover { background:#fdf9f4; }
+  .technique-num { font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;color:rgba(201,168,76,0.07);position:absolute;top:16px;right:24px;line-height:1;transition:color 0.4s; }
+  .technique-card:hover .technique-num { color:rgba(201,168,76,0.14); }
+  .technique-badge { display:inline-block;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.35);padding:5px 14px;border-radius:2px;margin-bottom:24px; }
+  .technique-name { font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;line-height:1.2;margin-bottom:16px; }
+  .technique-name em { color:var(--gold);font-style:italic; }
+  .technique-tagline { font-size:0.9rem;color:var(--warm-gray);line-height:1.7;margin-bottom:28px; }
+  .t-steps { display:flex;flex-direction:column;gap:14px; }
+  .t-step { display:flex;align-items:flex-start;gap:14px;font-size:0.86rem;color:#444;line-height:1.65; }
+  .t-dot { width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:7px; }
+
+  /* VISUAL MAP */
+  #diagram { background:var(--dark); }
+  #diagram .section-title { color:white; }
+  .diagram-wrap {
+    margin-top:60px;
+    display:flex;align-items:center;justify-content:center;
+    flex-wrap:wrap;gap:0;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(201,168,76,0.1);
+    padding:60px 80px;
+  }
+  .face-map { width:300px;height:380px;flex-shrink:0; }
+  .face-map svg { width:100%;height:100%; }
+  .map-legend { padding-left:60px;display:flex;flex-direction:column;gap:20px; }
+  .legend-row { display:flex;align-items:center;gap:16px; }
+  .legend-swatch { width:26px;height:26px;border-radius:4px;flex-shrink:0; }
+  .legend-name { font-size:0.88rem;color:white;font-weight:500; }
+  .legend-desc { font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:2px; }
+
+  /* STATS */
+  #stats { background:var(--off-white); }
+  .stats-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px; }
+  .stat-block { background:var(--dark);padding:48px 36px;text-align:center;border:1px solid rgba(201,168,76,0.08);transition:background 0.3s,border-color 0.3s; }
+  .stat-block:hover { background:#222;border-color:rgba(201,168,76,0.25); }
+  .stat-num { font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;color:var(--gold);line-height:1; }
+  .stat-label { font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:0.12em;text-transform:uppercase;margin-top:12px; }
+
+  /* PROCESS */
+  #process { background:var(--cream); }
+  .process-steps { display:flex;flex-direction:column;gap:2px;margin-top:60px; }
+  .process-step { display:grid;grid-template-columns:80px 1fr;gap:40px;align-items:start;padding:36px 48px;background:white;position:relative;overflow:hidden;transition:background 0.3s; }
+  .process-step::before { content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform 0.3s;transform-origin:bottom; }
+  .process-step:hover::before { transform:scaleY(1); }
+  .process-step:hover { background:#fdf9f4; }
+  .step-num { font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:rgba(201,168,76,0.2);line-height:1; }
+  .step-title { font-size:1.05rem;font-weight:500;margin-bottom:8px; }
+  .step-desc { font-size:0.88rem;color:var(--warm-gray);line-height:1.7; }
+
+  /* GALLERY */
+  #gallery { background:var(--off-white); }
+  .gallery-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:60px; }
+
+  .gallery-item {
+    aspect-ratio:4/5;
+    position:relative;overflow:hidden;cursor:pointer;
+    transition:box-shadow 0.4s ease, z-index 0s;
+  }
+  .gallery-item:nth-child(1){background:#1e1a16;} .gallery-item:nth-child(2){background:#201c18;} .gallery-item:nth-child(3){background:#1c1814;}
+  .gallery-item:nth-child(4){background:#221e1a;} .gallery-item:nth-child(5){background:#1e1c18;} .gallery-item:nth-child(6){background:#1a1614;}
+  .gallery-item:hover { box-shadow:0 24px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,168,76,0.25); z-index:2; }
+
+  /* shimmer sweep on hover */
+  .gallery-item::before {
+    content:'';
+    position:absolute;inset:0;z-index:4;pointer-events:none;
+    background:linear-gradient(115deg,transparent 25%,rgba(255,255,255,0.08) 50%,transparent 75%);
+    transform:translateX(-120%);
+    transition:transform 0.65s ease;
+  }
+  .gallery-item:hover::before { transform:translateX(120%); }
+
+  /* vignette on hover */
+  .gallery-item::after {
+    content:'';
+    position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.5) 100%);
+    opacity:0;transition:opacity 0.45s;
+  }
+  .gallery-item:hover::after { opacity:1; }
+
+  /* placeholder content */
+  .gallery-placeholder {
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;
+    transition:transform 0.65s cubic-bezier(0.33,1,0.68,1);
+  }
+  .gallery-item:hover .gallery-placeholder { transform:scale(1.07); }
+
+  .gallery-icon {
+    font-size:2.8rem;opacity:0.12;
+    transition:opacity 0.4s, transform 0.55s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .gallery-item:hover .gallery-icon { opacity:0.2; transform:scale(1.18) translateY(-8px); }
+
+  .gallery-placeholder-text {
+    font-size:0.72rem;color:rgba(255,255,255,0.18);letter-spacing:0.1em;text-transform:uppercase;
+    transition:opacity 0.25s, transform 0.3s;
+  }
+  .gallery-item:hover .gallery-placeholder-text { opacity:0; transform:translateY(10px); }
+
+  /* corner number badge */
+  .gallery-num {
+    position:absolute;top:18px;right:20px;z-index:5;
+    font-family:'Playfair Display',serif;font-size:1rem;font-weight:900;
+    color:rgba(201,168,76,0.2);
+    transform:translateY(-4px);opacity:0;
+    transition:opacity 0.3s 0.05s, transform 0.3s 0.05s, color 0.3s;
+  }
+  .gallery-item:hover .gallery-num { opacity:1; transform:translateY(0); color:rgba(201,168,76,0.75); }
+
+  /* overlay — slides up */
+  .gallery-overlay {
+    position:absolute;inset:0;z-index:3;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    background:linear-gradient(to top, rgba(8,6,4,0.92) 0%, rgba(8,6,4,0.35) 45%, transparent 68%);
+    transform:translateY(10px);opacity:0;
+    transition:opacity 0.4s ease, transform 0.4s cubic-bezier(0.33,1,0.68,1);
+    padding:0 26px 0;
+  }
+  .gallery-item:hover .gallery-overlay { opacity:1; transform:translateY(0); }
+
+  /* gold bar inside overlay */
+  .gallery-overlay-bar {
+    height:2px;flex-shrink:0;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform 0.5s 0.15s cubic-bezier(0.33,1,0.68,1);
+    margin-bottom:16px;
+  }
+  .gallery-item:hover .gallery-overlay-bar { transform:scaleX(1); }
+
+  .gallery-overlay-content { padding-bottom:26px; }
+
+  .gallery-overlay-tag {
+    display:inline-block;
+    font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
+    border:1px solid rgba(201,168,76,0.5);color:var(--gold);
+    padding:3px 10px;border-radius:2px;margin-bottom:10px;
+    transform:translateY(10px);opacity:0;
+    transition:opacity 0.32s 0.1s ease, transform 0.32s 0.1s ease;
+  }
+  .gallery-item:hover .gallery-overlay-tag { opacity:1; transform:translateY(0); }
+
+  .gallery-overlay-title {
+    font-family:'Playfair Display',serif;
+    font-size:1.05rem;color:white;font-weight:700;margin-bottom:5px;line-height:1.2;
+    transform:translateY(12px);opacity:0;
+    transition:opacity 0.32s 0.17s ease, transform 0.32s 0.17s ease;
+  }
+  .gallery-item:hover .gallery-overlay-title { opacity:1; transform:translateY(0); }
+
+  .gallery-overlay-sub {
+    font-size:0.74rem;color:rgba(255,255,255,0.48);letter-spacing:0.06em;
+    transform:translateY(12px);opacity:0;
+    transition:opacity 0.32s 0.23s ease, transform 0.32s 0.23s ease;
+  }
+  .gallery-item:hover .gallery-overlay-sub { opacity:1; transform:translateY(0); }
+
+  /* TOOLS */
+  #tools { background:var(--dark);padding:80px 0; }
+  #tools .section-title { color:white; }
+  .tools-grid { display:flex;flex-wrap:wrap;gap:12px;margin-top:40px; }
+  .tool-chip { border:1px solid rgba(201,168,76,0.3);color:rgba(255,255,255,0.65);padding:12px 24px;font-size:0.85rem;letter-spacing:0.08em;border-radius:2px;transition:all 0.3s;cursor:default; }
+  .tool-chip:hover { border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.05); }
+
+  .next-project { background:var(--dark);border-top:1px solid rgba(201,168,76,0.1);padding:60px;display:flex;justify-content:space-between;align-items:center; }
+  .next-label { font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px; }
+  .next-title { font-family:'Playfair Display',serif;font-size:2rem;color:white;font-weight:700;transition:color 0.3s; }
+  .next-link { text-decoration:none;display:flex;align-items:center;gap:24px; }
+  .next-link:hover .next-title { color:var(--gold); }
+  .next-arrow { width:56px;height:56px;border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.4rem;transition:all 0.3s;border-radius:2px; }
+  .next-link:hover .next-arrow { background:var(--gold);color:var(--dark);border-color:var(--gold); }
+  .back-home { display:flex;align-items:center;gap:10px;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.3s; }
+  .back-home:hover { color:var(--gold); }
+
+  footer { background:#111;padding:28px 60px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(201,168,76,0.1); }
+  .footer-logo { font-family:'Playfair Display',serif;font-size:1rem;color:rgba(255,255,255,0.5);letter-spacing:0.1em; }
+  .footer-copy { font-size:0.72rem;color:rgba(255,255,255,0.25);letter-spacing:0.08em; }
+
+  .reveal { opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease; }
+  .reveal.visible { opacity:1;transform:translateY(0); }
+  .reveal-left { opacity:0;transform:translateX(-40px);transition:opacity 0.8s ease,transform 0.8s ease; }
+  .reveal-left.visible { opacity:1;transform:translateX(0); }
+  .reveal-right { opacity:0;transform:translateX(40px);transition:opacity 0.8s ease,transform 0.8s ease; }
+  .reveal-right.visible { opacity:1;transform:translateX(0); }
+  .d1{transition-delay:0.1s;} .d2{transition-delay:0.2s;} .d3{transition-delay:0.3s;} .d4{transition-delay:0.4s;}
+
+  @media(max-width:768px){
+    nav{padding:20px 24px;} nav.scrolled{padding:14px 24px;}
+    .hero-inner,.section-inner{padding:0 24px;}
+    .overview-grid,.cs-grid,.techniques-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .process-step{grid-template-columns:50px 1fr;padding:24px;gap:20px;}
+    .cs-panel{padding:40px 28px;}
+    .technique-card{padding:40px 28px;}
+    .diagram-wrap{padding:32px 24px;flex-direction:column;}
+    .map-legend{padding-left:0;padding-top:32px;}
+    .next-project{padding:40px 24px;}
+    body{cursor:auto;} .cursor,.cursor-follower{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursor-follower"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">DEW.</a>
+  <a href="index.html" class="nav-back">← Back to Portfolio</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-num">01</div>
+  <div class="hero-inner">
+    <p class="hero-tag">Natural Makeup Tutorials</p>
+    <h1 class="hero-title">Sculpting <em>&</em><br>Framing</h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="hero-meta-dot"></div> Beauty Content</div>
+      <div class="hero-meta-item"><div class="hero-meta-dot"></div> TikTok & Instagram</div>
+      <div class="hero-meta-item"><div class="hero-meta-dot"></div> Beginner Audience</div>
+      <div class="hero-meta-item"><div class="hero-meta-dot"></div> Naturally Lifted Look</div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section" id="overview">
+  <div class="section-inner">
+    <div class="overview-grid">
+      <div class="reveal-left">
+        <p class="section-label">Project Overview</p>
+        <h2 class="section-title">Natural <em>dimensions</em>,<br>real confidence</h2>
+        <div class="overview-body">
+          <p>A specialized digital guide focused on the art of facial sculpting and framing for a natural look. Instead of heavy foundation, this project emphasizes enhancing facial dimensions through strategic placement of blush, eyebrow definition, and subtle contouring to create a <strong>"naturally lifted"</strong> appearance.</p>
+          <p>The guiding philosophy: makeup should reveal your face's best angles, not mask them. Every technique in this series is designed to work with your natural bone structure — making the result look effortless even when it isn't.</p>
+          <p>This project emerged from noticing a clear gap: most beginner content either skips contouring entirely or jumps to advanced techniques that overwhelm first-timers. This fills that space with clarity and confidence.</p>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="info-card">
+          <div class="info-row"><span class="info-key">Category</span><span class="info-val">Beauty Tutorial</span></div>
+          <div class="info-row"><span class="info-key">Focus</span><span class="info-val">Sculpting · Framing</span></div>
+          <div class="info-row"><span class="info-key">Platform</span><span class="info-val">TikTok · Instagram</span></div>
+          <div class="info-row"><span class="info-key">Audience</span><span class="info-val">Beginners · Teens</span></div>
+          <div class="info-row"><span class="info-key">Format</span><span class="info-val">Carousel · Video</span></div>
+          <div class="info-row"><span class="info-key">Key Technique</span><span class="info-val gold">Visual Mapping Carousel</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGE & SOLUTION -->
+<section class="section" id="cs">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Problem & Solution</p>
+      <h2 class="section-title">The <em>Challenge</em> & The Fix</h2>
+    </div>
+  </div>
+  <div class="cs-grid" style="max-width:1200px;margin:0 auto;">
+    <div class="cs-panel challenge reveal-left d1">
+      <span class="cs-icon">😟</span>
+      <span class="cs-pill">The Challenge</span>
+      <h3 class="cs-title">Contour that looks like a smudge — and brows that look blocky</h3>
+      <p class="cs-body">Many beginners find it difficult to apply contour without it looking like a <strong>"dirty smudge"</strong> — harsh lines that add shadow in all the wrong places, making the face look unclean rather than sculpted. Equally common is the <strong>"blocky brow"</strong> problem: eyebrows drawn in one flat motion that look painted-on rather than natural. These two issues alone are enough to make beginners give up on sculpting entirely and retreat to a flat, one-dimensional base.</p>
+    </div>
+    <div class="cs-panel solution reveal-right d2">
+      <span class="cs-icon">✨</span>
+      <span class="cs-pill">The Solution</span>
+      <h3 class="cs-title">Visual Mapping Carousel — a system that makes it foolproof</h3>
+      <p class="cs-body">I developed the <strong>Visual Mapping Carousel Hack</strong> — a step-by-step carousel post that maps out exactly where dots of contour should be placed before blending. Combined with the <strong>Hair-like Stroke method</strong> for brows, this system ensures the makeup looks like natural shadows and real hair rather than heavy product application. Two techniques. One system. Beginner-proof results every time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNIQUES -->
+<section class="section" id="techniques">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Signature Techniques</p>
+      <h2 class="section-title">Two methods that <em>changed</em> everything</h2>
+    </div>
+    <div class="techniques-grid">
+      <div class="technique-card reveal d1">
+        <div class="technique-num">01</div>
+        <span class="technique-badge">Contour Method</span>
+        <h3 class="technique-name">"Dot-and-Blend"<br><em>Technique</em></h3>
+        <p class="technique-tagline">A foolproof placement method that eliminates harsh lines — the result always looks like a natural shadow, never a stripe or smear.</p>
+        <div class="t-steps">
+          <div class="t-step"><div class="t-dot"></div><span>Apply 3–5 small dots of contour product along the hollows of the cheekbones and sides of the nose using a flat brush or fingertip.</span></div>
+          <div class="t-step"><div class="t-dot"></div><span>Use a clean damp sponge to tap — never drag — over the dots, diffusing outward in small circular motions from each dot.</span></div>
+          <div class="t-step"><div class="t-dot"></div><span>Layer gradually. Stop when it resembles a shadow, not a stripe. Less is more on the first pass.</span></div>
+          <div class="t-step"><div class="t-dot"></div><span>Set with a translucent powder pressed lightly on top to melt the contour seamlessly into skin texture.</span></div>
+        </div>
+      </div>
+      <div class="technique-card reveal d2">
+        <div class="technique-num">02</div>
+        <span class="technique-badge">Brow Method</span>
+        <h3 class="technique-name">"Hair-like Stroke"<br><em>Method</em></h3>
+        <p class="technique-tagline">Mimics the natural direction and thickness of real eyebrow hairs — making even sparse brows look full without looking drawn-on.</p>
+        <div class="t-steps">
+          <div class="t-step"><div class="t-dot"></div><span>Use a sharp brow pencil or micro-blade pen. Hold it lightly — heavy pressure creates the blocky lines we're avoiding.</span></div>
+          <div class="t-step"><div class="t-dot"></div><span>Draw short, feathery strokes that follow the natural growth direction: upward at the head, diagonal at the arch, horizontal at the tail.</span></div>
+          <div class="t-step"><div class="t-dot"></div><span>Vary the pressure — lighter at the inner brow head, slightly firmer at the arch peak for definition.</span></div>
+          <div class="t-step"><div class="t-dot"></div><span>Brush through with a spoolie to blend. Goal: zero visible start or end points — just brows that look real.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL MAP DIAGRAM -->
+<section class="section" id="diagram">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">The Visual Map</p>
+      <h2 class="section-title">Placement <em>Guide</em></h2>
+    </div>
+    <div class="diagram-wrap reveal d1">
+      <!-- Face SVG map -->
+      <div class="face-map">
+        <svg viewBox="0 0 300 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Face shape -->
+          <ellipse cx="150" cy="180" rx="110" ry="145" fill="rgba(255,255,255,0.03)" stroke="rgba(201,168,76,0.2)" stroke-width="1.5"/>
+          <!-- Forehead contour band -->
+          <path d="M75,90 Q110,62 150,58 Q190,62 225,90" stroke="rgba(140,110,70,0.55)" stroke-width="11" stroke-linecap="round" fill="none"/>
+          <!-- LEFT cheek contour dots -->
+          <circle cx="55" cy="185" r="5" fill="rgba(140,110,70,0.85)"/>
+          <circle cx="62" cy="199" r="4.5" fill="rgba(140,110,70,0.7)"/>
+          <circle cx="72" cy="211" r="4" fill="rgba(140,110,70,0.55)"/>
+          <!-- RIGHT cheek contour dots -->
+          <circle cx="245" cy="185" r="5" fill="rgba(140,110,70,0.85)"/>
+          <circle cx="238" cy="199" r="4.5" fill="rgba(140,110,70,0.7)"/>
+          <circle cx="228" cy="211" r="4" fill="rgba(140,110,70,0.55)"/>
+          <!-- Nose shadow lines -->
+          <line x1="137" y1="135" x2="137" y2="222" stroke="rgba(140,110,70,0.45)" stroke-width="7" stroke-linecap="round"/>
+          <line x1="163" y1="135" x2="163" y2="222" stroke="rgba(140,110,70,0.45)" stroke-width="7" stroke-linecap="round"/>
+          <!-- Jaw contour -->
+          <path d="M80,272 Q120,312 150,320 Q180,312 220,272" stroke="rgba(140,110,70,0.45)" stroke-width="11" stroke-linecap="round" fill="none"/>
+          <!-- Blush – left -->
+          <ellipse cx="94" cy="228" rx="30" ry="16" fill="rgba(220,130,110,0.22)" transform="rotate(-18 94 228)"/>
+          <!-- Blush – right -->
+          <ellipse cx="206" cy="228" rx="30" ry="16" fill="rgba(220,130,110,0.22)" transform="rotate(18 206 228)"/>
+          <!-- Brow left – hair strokes -->
+          <path d="M82,122 Q108,108 140,112" stroke="rgba(201,168,76,0.9)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path d="M85,128 Q109,115 138,119" stroke="rgba(201,168,76,0.5)" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- Brow right -->
+          <path d="M160,112 Q192,108 218,122" stroke="rgba(201,168,76,0.9)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path d="M162,119 Q191,115 215,128" stroke="rgba(201,168,76,0.5)" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- Highlight nose bridge -->
+          <line x1="150" y1="118" x2="150" y2="182" stroke="rgba(255,255,220,0.25)" stroke-width="9" stroke-linecap="round"/>
+          <!-- Highlight cupid bow -->
+          <ellipse cx="150" cy="255" rx="14" ry="6" fill="rgba(255,255,220,0.18)"/>
+          <!-- Highlight chin -->
+          <ellipse cx="150" cy="318" rx="12" ry="7" fill="rgba(255,255,220,0.12)"/>
+          <!-- Connector lines for labels -->
+          <line x1="38" y1="192" x2="52" y2="192" stroke="rgba(201,168,76,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="248" y1="192" x2="262" y2="192" stroke="rgba(201,168,76,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+        </svg>
+      </div>
+      <!-- Legend -->
+      <div class="map-legend">
+        <div class="legend-row">
+          <div class="legend-swatch" style="background:rgba(140,110,70,0.8);"></div>
+          <div><div class="legend-name">Contour Zones</div><div class="legend-desc">Cheeks · Nose sides · Jaw · Forehead</div></div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-swatch" style="background:rgba(140,110,70,0.9);border-radius:50%;"></div>
+          <div><div class="legend-name">Dot Placement</div><div class="legend-desc">Dot-and-Blend start points — tap, don't drag</div></div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-swatch" style="background:rgba(220,130,110,0.5);"></div>
+          <div><div class="legend-name">Blush Zones</div><div class="legend-desc">Apples of cheeks, swept toward temples</div></div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-swatch" style="background:rgba(201,168,76,1);"></div>
+          <div><div class="legend-name">Brow Definition</div><div class="legend-desc">Hair-like strokes — natural growth direction</div></div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-swatch" style="background:rgba(255,255,220,0.5);"></div>
+          <div><div class="legend-name">Highlight Points</div><div class="legend-desc">Bridge · Cupid's bow · Center chin</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section" id="stats">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Analytics</p>
+      <h2 class="section-title">Content <em>Performance</em></h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-block reveal d1"><div class="stat-num" data-target="39" data-suffix="K+">0</div><div class="stat-label">Post View Growth</div></div>
+      <div class="stat-block reveal d2"><div class="stat-num" data-target="1311" data-suffix="+">0</div><div class="stat-label">Likes Gained</div></div>
+      <div class="stat-block reveal d3"><div class="stat-num" data-target="442" data-suffix="+">0</div><div class="stat-label">Shares</div></div>
+      <div class="stat-block reveal d4"><div class="stat-num" data-target="684" data-suffix="%+">0</div><div class="stat-label">View Growth Rate</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="process">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Behind the Content</p>
+      <h2 class="section-title">Creative <em>Process</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal d1">
+        <div class="step-num">01</div>
+        <div><div class="step-title">Identify the Pain Point</div><div class="step-desc">Analyze comment sections on existing contour tutorials to find recurring beginner complaints: "smudge effect", "blocky brows", "looks dirty not sculpted". These real frustrations become the hook and focus of the content.</div></div>
+      </div>
+      <div class="process-step reveal d2">
+        <div class="step-num">02</div>
+        <div><div class="step-title">Develop the Visual Mapping Carousel</div><div class="step-desc">Sketch a face diagram with exact dot placement markers and zone labels. This core carousel slide is what stops the scroll — a visual beginners can screenshot and use as a physical reference while doing their makeup.</div></div>
+      </div>
+      <div class="process-step reveal d3">
+        <div class="step-num">03</div>
+        <div><div class="step-title">Film the Before & After</div><div class="step-desc">Record a clean bare-face start, then apply each technique on-camera with close-up shots of dot placement and stroke direction. The before/after transformation is the payoff that earns the share and save.</div></div>
+      </div>
+      <div class="process-step reveal d4">
+        <div class="step-num">04</div>
+        <div><div class="step-title">Package as Carousel + Reel</div><div class="step-desc">Repurpose into two formats: a Carousel for Instagram (save-worthy, educational) and a short Reel/TikTok (entertainment + demonstration). Same content, two formats, double the reach and engagement.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="section-inner">
+    <div class="reveal"><p class="section-label">Content Showcase</p><h2 class="section-title">Visual <em>Gallery</em></h2></div>
+  </div>
+  <div class="gallery-grid" style="max-width:1200px;margin:60px auto 0;padding:0 60px;">
+    <div class="gallery-item reveal d1">
+      <div class="gallery-num">01</div>
+      <div class="gallery-placeholder"><div class="gallery-icon">🗺️</div><div class="gallery-placeholder-text">Carousel #1</div></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-bar"></div>
+        <div class="gallery-overlay-content">
+          <div class="gallery-overlay-tag">Carousel</div>
+          <div class="gallery-overlay-title">Visual Mapping Carousel</div>
+          <div class="gallery-overlay-sub">The dot placement guide</div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item reveal d2">
+      <div class="gallery-num">02</div>
+      <div class="gallery-placeholder"><div class="gallery-icon">✏️</div><div class="gallery-placeholder-text">Tutorial #2</div></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-bar"></div>
+        <div class="gallery-overlay-content">
+          <div class="gallery-overlay-tag">Technique</div>
+          <div class="gallery-overlay-title">Hair-like Stroke Brows</div>
+          <div class="gallery-overlay-sub">Step-by-step brow method</div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item reveal d3">
+      <div class="gallery-num">03</div>
+      <div class="gallery-placeholder"><div class="gallery-icon">🔁</div><div class="gallery-placeholder-text">Comparison #3</div></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-bar"></div>
+        <div class="gallery-overlay-content">
+          <div class="gallery-overlay-tag">Transformation</div>
+          <div class="gallery-overlay-title">Before vs. After</div>
+          <div class="gallery-overlay-sub">Dot-and-Blend result</div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item reveal d1">
+      <div class="gallery-num">04</div>
+      <div class="gallery-placeholder"><div class="gallery-icon">🌸</div><div class="gallery-placeholder-text">Tutorial #4</div></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-bar"></div>
+        <div class="gallery-overlay-content">
+          <div class="gallery-overlay-tag">Blush</div>
+          <div class="gallery-overlay-title">Blush Placement</div>
+          <div class="gallery-overlay-sub">Natural lifted cheek look</div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item reveal d2">
+      <div class="gallery-num">05</div>
+      <div class="gallery-placeholder"><div class="gallery-icon">💡</div><div class="gallery-placeholder-text">Tip #5</div></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-bar"></div>
+        <div class="gallery-overlay-content">
+          <div class="gallery-overlay-tag">Highlight</div>
+          <div class="gallery-overlay-title">Highlight Strategy</div>
+          <div class="gallery-overlay-sub">3-point placement guide</div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item reveal d3">
+      <div class="gallery-num">06</div>
+      <div class="gallery-placeholder"><div class="gallery-icon">🎯</div><div class="gallery-placeholder-text">Full Look #6</div></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-bar"></div>
+        <div class="gallery-overlay-content">
+          <div class="gallery-overlay-tag">Full Look</div>
+          <div class="gallery-overlay-title">Full Sculpt Routine</div>
+          <div class="gallery-overlay-sub">All techniques combined</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-inner">
+    <div class="reveal"><p class="section-label">Toolkit</p><h2 class="section-title">Tools <em>Used</em></h2></div>
+    <div class="tools-grid reveal d1">
+      <div class="tool-chip">CapCut</div>
+      <div class="tool-chip">Canva</div>
+      <div class="tool-chip">TikTok Studio</div>
+      <div class="tool-chip">Instagram Reels</div>
+      <div class="tool-chip">Lightroom Mobile</div>
+      <div class="tool-chip">TikTok Analytics</div>
+    </div>
+  </div>
+</section>
+
+<div class="next-project">
+  <a href="index.html" class="back-home">← All Projects</a>
+  <a href="project-02.html" class="next-link">
+    <div><div class="next-label">Next Project</div><div class="next-title">Honest Product Reviews</div></div>
+    <div class="next-arrow">→</div>
+  </a>
+</div>
+
+<footer>
+  <div class="footer-logo">Dewi Wahyuni</div>
+  <div class="footer-copy">© 2025 Beauty & Digital Content Portfolio</div>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),follower=document.getElementById('cursor-follower');
+document.addEventListener('mousemove',e=>{
+  cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';
+  setTimeout(()=>{follower.style.left=e.clientX+'px';follower.style.top=e.clientY+'px';},80);
+});
+document.querySelectorAll('a,button,.gallery-item,.process-step,.tool-chip,.stat-block,.technique-card,.cs-panel').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';follower.style.width='60px';follower.style.height='60px';});
+  el.addEventListener('mouseleave',()=>{cursor.style.width='12px';cursor.style.height='12px';follower.style.width='40px';follower.style.height='40px';});
+});
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');e.target.querySelectorAll('[data-target]').forEach(animateCounter);}});},{threshold:0.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+function animateCounter(el){const t=parseInt(el.dataset.target),s=el.dataset.suffix||'';let st=0;const step=ts=>{if(!st)st=ts;const p=Math.min((ts-st)/1400,1),ease=1-Math.pow(1-p,3);el.textContent=Math.floor(ease*t)+s;if(p<1)requestAnimationFrame(step);else el.textContent=t+s;};requestAnimationFrame(step);}
+const heroNum=document.querySelector('.hero-num');
+window.addEventListener('scroll',()=>{if(heroNum)heroNum.style.transform=`translateY(calc(-50% + ${window.scrollY*0.2}px))`;},{passive:true});
+</script>
+</body>
+</html>
